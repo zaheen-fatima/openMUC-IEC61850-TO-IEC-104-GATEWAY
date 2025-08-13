@@ -1,0 +1,38 @@
+# Compiled class files
+*.class
+*.jar
+*.war
+*.ear
+
+# Gradle build directories
+.gradle/
+build/
+
+# Gradle wrapper
+gradle/wrapper/gradle-wrapper.jar
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+*.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Eclipse specific
+.settings/
+bin/
+
+# IntelliJ specific
+out/

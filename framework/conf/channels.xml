@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+
+    <!-- IEC 61850 Driver (Read from IED) -->
+    <driver id="iec61850">
+        <device id="ied1" access="read">
+
+            <deviceAddress>127.0.0.1:500</deviceAddress>
+            <settings>-lt 0001 -rt 0001 -a false</settings>
+
+            <channel id="healthStatus">
+                <channelAddress>IC3_F650PRO/LLN0.Health.stVal:ST</channelAddress>
+                <valueType>BOOLEAN</valueType>
+                <samplingInterval>2000</samplingInterval>
+                <loggingInterval>5000</loggingInterval>
+                <serverMapping id="iec104">ca=1;t=30;ioa=200</serverMapping>
+            </channel>
+
+            <channel id="breakerPosition">
+                <channelAddress>IC3_F650PRO/XCBR1.Pos.stVal:ST</channelAddress>
+                <valueType>BOOLEAN</valueType>
+                <samplingInterval>2000</samplingInterval>
+                <loggingInterval>5000</loggingInterval>
+                <serverMapping id="iec104">ca=1;t=45;ioa=101</serverMapping>
+            </channel>
+
+            <channel id="frequency">
+                <channelAddress>IC3_F650PRO/MMXU1.Hz.mag.f:MX</channelAddress>
+                <valueType>FLOAT</valueType>
+                <samplingInterval>2000</samplingInterval>
+                <loggingInterval>5000</loggingInterval>
+                <serverMapping id="iec104">ca=1;t=45;ioa=201</serverMapping>
+            </channel>
+
+        </device>
+    </driver>
+
+
+    <driver id="iec104">
+        <device id="iec104server" access="write">
+
+            <deviceAddress>ca=1;p=2404;h=127.0.0.1</deviceAddress>
+            <settings>mft=30000;t0=30000;t1=15000;t2=10000;t3=20000</settings>
+
+            <channel id="healthStatus_iec104">
+                <channelAddress>ca=1;t=30;ioa=200</channelAddress>
+                <valueType>BOOLEAN</valueType>
+            </channel>
+
+            <channel id="breakerPosition_iec104">
+                <channelAddress>ca=1;t=45;ioa=101</channelAddress>
+                <valueType>BOOLEAN</valueType>
+            </channel>
+
+            <channel id="frequency_iec104">
+                <channelAddress>ca=1;t=45;ioa=201</channelAddress>
+                <valueType>FLOAT</valueType>
+            </channel>
+
+        </device>
+    </driver>
+
+</configuration>

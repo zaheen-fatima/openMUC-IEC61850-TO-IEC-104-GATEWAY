@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'biz.aQute.bnd.builder'
+}
+
+
+
+repositories {
+    mavenCentral()
+
+}
+
+dependencies {
+
+
+
+    compileOnly 'org.osgi:org.osgi.service.component.annotations:1.5.1'
+    compileOnly project(':openmuc-core-api')
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    compileOnly 'org.slf4j:slf4j-api:1.7.36'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Bundle-SymbolicName':  'org-openmuc-iec61850TO104',
+                'Bundle-Version': '0.20.1',
+                'Import-Package': 'org.osgi.service.component;version="[1.5,2)", org.osgi.service.component.annotations;version="[1.5,2)", org.openmuc.framework.data;version="[0.20,1)", org.openmuc.framework.dataaccess;version="[0.20,1)",org.slf4j;version="[1.7,2)",*',
+                'Export-Package': 'org.openmuc.framework.app.iec61850TO104;version=0.20.1',
+        )
+    }
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+}
